@@ -4,20 +4,22 @@
 	
 	<servlet>
         <servlet-name>GroovyServlet</servlet-name>
-        <servlet-class>groovy.servlet.GroovyServlet</servlet-class>
-        
-        <init-param> 
-    		<param-name>Version</param-name> 
-    		<param-value>1.0</param-value> 
-		</init-param> 
+        <servlet-class>groovy.servlet.GroovyServlet</servlet-class>                
     </servlet>
     <servlet-mapping>
         <servlet-name>GroovyServlet</servlet-name>
         <url-pattern>*.groovy</url-pattern>             
     </servlet-mapping>
-	
-   
+	   
+
+  	  
 	<welcome-file-list>
 	    <welcome-file>index.groovy</welcome-file>	
 	</welcome-file-list>
+	
+	<context-param>  
+    	<description>Put your Version Number Here</description>  
+    	<param-name>Version</param-name>  
+    	<param-value>1.0</param-value>  
+  	</context-param>
 </web-app>

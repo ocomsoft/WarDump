@@ -75,15 +75,17 @@ def dumpCollection (parentElement, String name, Collection data, Integer level) 
 
 html.html {
 	head {
-		title "Hello from Server "
+		title "Hello from Server V${context.getInitParameter('Version')}"
 		link  (href:"//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css", rel:"stylesheet")
 	}
 	body {
 		h1 "Hello ${context.getInitParameter('Version')}!"
 		
 		h2 "Session"
-		p "Session ID: ${session.id}"
-		a (href:request.requestURI+"?newSession=true", "New Session")			
+		span {
+			span "ID: ${session.id}" 
+			a (href:request.requestURI+"?newSession=true", "New Session")
+		}			
 		
 		div (class:"row") {
 			div (class:"col-sm-2") {
@@ -95,6 +97,8 @@ html.html {
 					a (class:"list-group-item", href:"#Headers Dump", "Headers Map")
 					a (class:"list-group-item", href:"#Context Dump", "Context Map")
 					a (class:"list-group-item", href:"#Environment Vars", "Environment Vars")
+					a (class:"list-group-item", href:"#ips", "IP Addresses")
+					
 				}
 			}			
 			div (class:"col-sm-10") {
@@ -109,6 +113,17 @@ html.html {
 				dumpMap (delegate, "Context Dump", context.properties, 1)
 				
 				dumpMap (delegate, "Environment Vars", System.getenv(), 1)
+				
+				a (id:"ips") {
+					h1 "IP Addresses"
+				}
+				ul {
+					java.net.NetworkInterface.getNetworkInterfaces().each {intf ->
+						intf.getInetAddresses().each {address ->
+							li (address.getHostAddress())
+						}
+					}
+				}						
 			}
 		}
 		
