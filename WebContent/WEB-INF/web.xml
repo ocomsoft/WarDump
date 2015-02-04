@@ -5,24 +5,19 @@
 	<servlet>
         <servlet-name>GroovyServlet</servlet-name>
         <servlet-class>groovy.servlet.GroovyServlet</servlet-class>
+        
+        <init-param> 
+    		<param-name>Version</param-name> 
+    		<param-value>1.0</param-value> 
+		</init-param> 
     </servlet>
     <servlet-mapping>
         <servlet-name>GroovyServlet</servlet-name>
-        <url-pattern>*.groovy</url-pattern>
+        <url-pattern>*.groovy</url-pattern>             
     </servlet-mapping>
 	
-    <init-param> 
-    	<param-name>Version</param-name> 
-    	<param-value>1.0</param-value> 
-	</init-param>
-
+   
 	<welcome-file-list>
-	    <welcome-file>index.groovy</welcome-file>
-		<welcome-file>index.html</welcome-file>
-		<welcome-file>index.htm</welcome-file>
-		<welcome-file>index.jsp</welcome-file>
-		<welcome-file>default.html</welcome-file>
-		<welcome-file>default.htm</welcome-file>
-		<welcome-file>default.jsp</welcome-file>
+	    <welcome-file>index.groovy</welcome-file>	
 	</welcome-file-list>
 </web-app>
